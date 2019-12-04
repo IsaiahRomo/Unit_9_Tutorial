@@ -57,7 +57,7 @@
                <legend>Customer Information</legend>
                <div class="formRow">
                   <label for="name">Name*</label>
-                  <input name="cusName" id="name" type="text" placeholder="First and Last Name" />
+                  <input required name="cusName" id="name" type="text" placeholder="First and Last Name" />
                </div>
                <div class="formRow">
                   <label for="street">Street</label>
@@ -65,7 +65,7 @@
                </div>
                <div class="formRow">
                   <label for="city">City</label>
-                  <input name="custCity" id="city" type="text" value="Ormond Beach" />
+                  <input maxlength="2" name="custCity" id="city" type="text" value="Ormond Beach" />
                </div>
                <div class="formRow">
                   <label for="state">State</label>
@@ -73,15 +73,15 @@
                </div>
                <div class="formRow">
                   <label for="zip">Postal Code</label>
-                  <input name="custZip" id="zip" type="text" placeholder="##### (-###)" />
+                  <input pattern="^\d{5}$(-\d{4})?$" name="custZip" id="zip" type="text" placeholder="#####(-###)" />
                </div>
                <div class="formRow">
                   <label for="phone">Phone Number</label>
-                  <input name="custPhone" id="phone" type="tel" placeholder="(###) ###-###" />
+                  <input pattern="^\d{10})$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$" name="custPhone" id="phone" type="tel" placeholder="(###)###-###" />
                </div>
                <div class="formRow">
                   <label for="mail">e-Mail*</label>
-                  <input name="custMail" id="mail" type="email" />
+                  <input required name="custMail" id="mail" type="email" />
                </div>
                <div class="formRow">
                   <label for="infoSrc">
@@ -94,6 +94,22 @@
                      <option value="word">Word of the Month</option>
                      <option value="other">Other</option>
                   </select>
+               </div>
+               <div class="formRow">
+                  <label for="dineSpin">How many times do you dine out in a month?</label>
+                  <input name="dineOut" id="dineSpin" type="number" value="1" step="1" min="0" max="20" />
+               </div>
+               <div class="formRow">
+                  <label for="dish">What is your favorite dish?</label>
+                  <input name="favDish" id="dish" type="text" list="dishType" />
+                  <datalist id="dishType">
+                     <option value="Antipasto Pizza" />
+                     <option value="Big Kahuna Pizza" />
+                     <option value="BBQ Chicken Pizza" />
+                     <option value="Mediterranean Herb Pizza" />
+                     <option value="Pasta Rolls" />
+                     <option value="Pasta Artichoke Pizzeria" />
+                  </datalist>
                </div>
                <input name="mailMe" id="mailCB" type="checkbox" />
                <label for="mailCB">Add me to your mailing list for great coupons and specials!</label>
@@ -140,9 +156,23 @@
                      <input name="foodhot" id="hNo" value="No" type="radio" />
                   </fieldset>
                </div>
+               <div class="formRow">
+                  <label for="rangeBox">Rate the overall service!<br/>(0=poor, 10=great)</label>
+                  0
+                  <input name="serviceRate" id="rangeBox" type="range" value="5" step="1" min="0" max="10" />
+                  10
+               </div>
                <label for="commentBox">Tell us more about your expericence!</label>
                <textarea name="crustExp" id="commBox"></textarea>
             </fieldset>
+            <div id="buttons">
+               <input type="submit" value="Submit My Survey" />
+               <input type="reset" value="Cancel" />
+               <!--<button type="menu">
+                  <img src="rb_logo.png" alt="" />
+                  <p>place your order now</p>
+               </button>-->
+            </div>
          </form>
      
    </section>
